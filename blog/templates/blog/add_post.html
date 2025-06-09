@@ -1,0 +1,36 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Add Post{% endblock title %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm rounded-4">
+                <div class="card-body">
+                    <h2 class="card-title mb-4 text-center">Create a New Post</h2>
+
+                    <form method="POST" action="{% url 'blog:addPost' %}">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Enter post title" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Content</label>
+                            <textarea class="form-control" id="content" name="content" rows="6" placeholder="Write your post content..." required></textarea>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Publish</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

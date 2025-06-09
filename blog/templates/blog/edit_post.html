@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+add post
+{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+    <h2 class="mb-4">Update The Post</h2>
+        <form method="POST" action="">
+            <!-- CSRF Token if using Django -->
+            {% csrf_token %}
+           {% for key, post in json_data.items %} 
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}"required >
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="5"  required> {{ post.content }}</textarea>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {% endfor %}
+        </form>
+</div>
+{% endblock body %}

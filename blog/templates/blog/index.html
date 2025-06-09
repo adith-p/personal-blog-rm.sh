@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Blog Homepage{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4">Welcome to my Blog</h1>
+
+
+    <table class="table table-hover">
+        <thead class="table-dark">
+            {% comment %} <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Date</th>
+            </tr> {% endcomment %}
+        </thead>
+        <tbody>
+            {% for key, post in json_data.items %}
+            <tr>
+                <td>
+                    <a href="{% url 'blog:readPost' post.id %}" class="text-decoration-none fw-semibold">
+                        {{ post.title }}
+                    </a>
+                </td>
+                <td>{{ post.publishing_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
